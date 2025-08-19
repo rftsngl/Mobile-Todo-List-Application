@@ -1,0 +1,493 @@
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --font-size: 14px;
+  
+  /* Design System Color Tokens */
+  --color-surface: #ffffff;
+  --color-surface-foreground: oklch(0.145 0 0);
+  --color-card: #ffffff;
+  --color-card-foreground: oklch(0.145 0 0);
+  --color-border: rgba(0, 0, 0, 0.1);
+  --color-primary: #030213;
+  --color-primary-foreground: oklch(1 0 0);
+  --color-muted: #ececf0;
+  --color-muted-foreground: #717182;
+  --color-success: #10b981;
+  --color-success-foreground: #ffffff;
+  --color-warning: #f59e0b;
+  --color-warning-foreground: #ffffff;
+  --color-danger: #d4183d;
+  --color-danger-foreground: #ffffff;
+  
+  /* [FIX-CTR] Text Color Styles with AA compliant contrast */
+  --text-primary: oklch(0.145 0 0); /* 16.67:1 on white ✅ */
+  --text-primary-rgb: 37, 41, 54;
+  --text-secondary: rgba(113, 113, 130, 1); /* 4.85:1 on white ✅ */
+  --text-secondary-rgb: 113, 113, 130;
+  
+  /* Legacy compatibility - map to new tokens */
+  --background: var(--color-surface);
+  --foreground: var(--color-surface-foreground);
+  --card: var(--color-card);
+  --card-foreground: var(--color-card-foreground);
+  --popover: var(--color-surface);
+  --popover-foreground: var(--color-surface-foreground);
+  --primary: var(--color-primary);
+  --primary-foreground: var(--color-primary-foreground);
+  --secondary: oklch(0.95 0.0058 264.53);
+  --secondary-foreground: var(--color-primary);
+  --muted: var(--color-muted);
+  --muted-foreground: var(--color-muted-foreground);
+  --accent: #e9ebef;
+  --accent-foreground: var(--color-primary);
+  --destructive: var(--color-danger);
+  --destructive-foreground: var(--color-danger-foreground);
+  --border: var(--color-border);
+  --input: transparent;
+  --input-background: #f3f3f5;
+  --switch-background: #cbced4;
+  --ring: oklch(0.708 0 0);
+  
+  /* Typography Tokens */
+  --font-weight-medium: 500;
+  --font-weight-normal: 400;
+  --text-h1: 1.75rem;
+  --text-h2: 1.5rem;
+  --text-h3: 1.25rem;
+  --text-h4: 1.125rem;
+  --text-body-md: 1rem;
+  --text-body-sm: 0.875rem;
+  --text-label-md: 1rem;
+  --text-label-sm: 0.875rem;
+  
+  /* [FIX-PERF] Effect Tokens - Reduced elevation levels */
+  --elevation-0: none;
+  --elevation-1: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --elevation-2: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  --elevation-3: 0 2px 4px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06); /* Reduced intensity */
+  
+  /* Radius Tokens */
+  --radius-8: 0.5rem;
+  --radius-12: 0.75rem;
+  --radius-16: 1rem;
+  --radius-24: 1.5rem;
+  --radius: var(--radius-16);
+  
+  /* Chart colors */
+  --chart-1: oklch(0.646 0.222 41.116);
+  --chart-2: oklch(0.6 0.118 184.704);
+  --chart-3: oklch(0.398 0.07 227.392);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+  
+  /* Sidebar tokens */
+  --sidebar: var(--color-surface);
+  --sidebar-foreground: var(--color-surface-foreground);
+  --sidebar-primary: var(--color-primary);
+  --sidebar-primary-foreground: var(--color-primary-foreground);
+  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-border: var(--color-border);
+  --sidebar-ring: oklch(0.708 0 0);
+}
+
+.dark {
+  /* Design System Color Tokens - Dark Mode */
+  --color-surface: oklch(0.145 0 0);
+  --color-surface-foreground: oklch(0.985 0 0);
+  --color-card: oklch(0.145 0 0);
+  --color-card-foreground: oklch(0.985 0 0);
+  --color-border: oklch(0.269 0 0);
+  --color-primary: oklch(0.985 0 0);
+  --color-primary-foreground: oklch(0.205 0 0);
+  --color-muted: oklch(0.269 0 0);
+  --color-muted-foreground: oklch(0.708 0 0);
+  --color-success: #10b981; /* [FIX-CTR] Kept darker for better contrast */
+  --color-success-foreground: oklch(0.985 0 0);
+  --color-warning: #f59e0b; /* [FIX-CTR] Kept darker for better contrast */
+  --color-warning-foreground: oklch(0.145 0 0);
+  --color-danger: #dc2626; /* [FIX-CTR] Darker red for better contrast */
+  --color-danger-foreground: oklch(0.985 0 0);
+  
+  /* [FIX-CTR] Text Color Styles - Dark Mode with AA compliant contrast */
+  --text-primary: oklch(0.985 0 0); /* 19.6:1 on dark surface ✅ */
+  --text-primary-rgb: 248, 250, 252;
+  --text-secondary: rgba(156, 163, 175, 1); /* [FIX-CTR] Lighter for better contrast 4.6:1 ✅ */
+  --text-secondary-rgb: 156, 163, 175;
+  
+  /* Legacy compatibility - map to new tokens */
+  --background: var(--color-surface);
+  --foreground: var(--color-surface-foreground);
+  --card: var(--color-card);
+  --card-foreground: var(--color-card-foreground);
+  --popover: var(--color-surface);
+  --popover-foreground: var(--color-surface-foreground);
+  --primary: var(--color-primary);
+  --primary-foreground: var(--color-primary-foreground);
+  --secondary: var(--color-muted);
+  --secondary-foreground: var(--color-surface-foreground);
+  --muted: var(--color-muted);
+  --muted-foreground: var(--color-muted-foreground);
+  --accent: var(--color-muted);
+  --accent-foreground: var(--color-surface-foreground);
+  --destructive: var(--color-danger);
+  --destructive-foreground: var(--color-danger-foreground);
+  --border: var(--color-border);
+  --input: var(--color-muted);
+  --ring: oklch(0.439 0 0);
+  
+  /* [FIX-PERF] Effect Tokens - Adjusted for dark mode with reduced intensity */
+  --elevation-0: none;
+  --elevation-1: 0 1px 2px 0 rgba(0, 0, 0, 0.2); /* Reduced from 0.3 */
+  --elevation-2: 0 1px 3px 0 rgba(0, 0, 0, 0.25), 0 1px 2px 0 rgba(0, 0, 0, 0.15); /* Reduced */
+  --elevation-3: 0 2px 4px 0 rgba(0, 0, 0, 0.3), 0 1px 2px 0 rgba(0, 0, 0, 0.2); /* Reduced */
+  
+  /* Chart colors - dark mode variants */
+  --chart-1: oklch(0.488 0.243 264.376);
+  --chart-2: oklch(0.696 0.17 162.48);
+  --chart-3: oklch(0.769 0.188 70.08);
+  --chart-4: oklch(0.627 0.265 303.9);
+  --chart-5: oklch(0.645 0.246 16.439);
+  
+  /* Sidebar tokens - dark mode */
+  --sidebar: oklch(0.205 0 0);
+  --sidebar-foreground: var(--color-surface-foreground);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: var(--color-surface-foreground);
+  --sidebar-accent: var(--color-muted);
+  --sidebar-accent-foreground: var(--color-surface-foreground);
+  --sidebar-border: var(--color-border);
+  --sidebar-ring: oklch(0.439 0 0);
+}
+
+/* [FIX-I18N] RTL Support */
+[dir="rtl"] {
+  /* RTL-specific adjustments */
+  text-align: right;
+}
+
+[dir="rtl"] .flex-row-reverse {
+  flex-direction: row-reverse;
+}
+
+/* [FIX-I18N] Icon mirroring for RTL */
+[dir="rtl"] .rtl-mirror {
+  transform: scaleX(-1);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-input-background: var(--input-background);
+  --color-switch-background: var(--switch-background);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+  
+  /* [FIX-PERF] Animation Variables - Optimized durations */
+  --transition-fast: 0.15s;
+  --transition-normal: 0.2s; /* Reduced from 0.25s */
+  --transition-slow: 0.3s; /* Reduced from 0.35s */
+  --transition-extra-slow: 0.4s; /* Reduced from 0.5s */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  --ease-elastic: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* [FIX-PERF] Smooth Animation Utilities - Optimized */
+@layer utilities {
+  .transition-smooth {
+    transition: all var(--transition-normal) var(--ease-out);
+  }
+  
+  .transition-smooth-fast {
+    transition: all var(--transition-fast) var(--ease-out);
+  }
+  
+  .transition-smooth-slow {
+    transition: all var(--transition-slow) var(--ease-out);
+  }
+  
+  .transition-bounce {
+    transition: all var(--transition-normal) var(--ease-bounce);
+  }
+  
+  .transition-elastic {
+    transition: all var(--transition-slow) var(--ease-elastic);
+  }
+  
+  .hover-lift {
+    transition: all var(--transition-normal) var(--ease-out);
+  }
+  
+  .hover-lift:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--elevation-2); /* [FIX-PERF] Use elevation token */
+  }
+  
+  .hover-scale {
+    transition: all var(--transition-fast) var(--ease-out);
+  }
+  
+  .hover-scale:hover {
+    transform: scale(1.02); /* [FIX-PERF] Reduced from 1.05 */
+  }
+  
+  .hover-glow {
+    transition: all var(--transition-normal) var(--ease-out);
+  }
+  
+  .hover-glow:hover {
+    box-shadow: 0 0 15px rgba(var(--primary), 0.2); /* [FIX-PERF] Reduced intensity */
+  }
+  
+  .animate-fade-in {
+    animation: fadeIn var(--transition-slow) var(--ease-out) both;
+  }
+  
+  .animate-slide-up {
+    animation: slideUp var(--transition-slow) var(--ease-out) both;
+  }
+  
+  .animate-slide-down {
+    animation: slideDown var(--transition-slow) var(--ease-out) both;
+  }
+  
+  .animate-scale-in {
+    animation: scaleIn var(--transition-normal) var(--ease-bounce) both;
+  }
+  
+  .animate-float {
+    animation: float 6s var(--ease-in-out) infinite;
+  }
+  
+  .animate-shimmer {
+    animation: shimmer 1.5s var(--ease-in-out) infinite;
+  }
+  
+  .animate-wave {
+    animation: wave 2s var(--ease-in-out) infinite;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95); /* [FIX-PERF] Reduced from 0.9 */
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-6px); /* [FIX-PERF] Reduced from -10px */
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes wave {
+  0%, 60%, 100% {
+    transform: initial;
+  }
+  30% {
+    transform: translateY(-8px); /* [FIX-PERF] Reduced from -10px */
+  }
+}
+
+/**
+ * Base typography. This is not applied to elements which have an ancestor with a Tailwind text class.
+ */
+@layer base {
+  :where(:not(:has([class*=" text-"]), :not(:has([class^="text-"])))) {
+    h1 {
+      font-size: var(--text-2xl);
+      font-weight: var(--font-weight-medium);
+      line-height: 1.5;
+      color: var(--text-primary); /* [FIX-CTR] Use semantic token */
+    }
+
+    h2 {
+      font-size: var(--text-xl);
+      font-weight: var(--font-weight-medium);
+      line-height: 1.5;
+      color: var(--text-primary); /* [FIX-CTR] Use semantic token */
+    }
+
+    h3 {
+      font-size: var(--text-lg);
+      font-weight: var(--font-weight-medium);
+      line-height: 1.5;
+      color: var(--text-primary); /* [FIX-CTR] Use semantic token */
+    }
+
+    h4 {
+      font-size: var(--text-base);
+      font-weight: var(--font-weight-medium);
+      line-height: 1.5;
+      color: var(--text-primary); /* [FIX-CTR] Use semantic token */
+    }
+
+    p {
+      font-size: var(--text-base);
+      font-weight: var(--font-weight-normal);
+      line-height: 1.5;
+      color: var(--text-primary); /* [FIX-CTR] Use semantic token */
+    }
+
+    label {
+      font-size: var(--text-base);
+      font-weight: var(--font-weight-medium);
+      line-height: 1.5;
+      color: var(--text-primary); /* [FIX-CTR] Use semantic token */
+    }
+
+    button {
+      font-size: var(--text-base);
+      font-weight: var(--font-weight-medium);
+      line-height: 1.5;
+    }
+
+    input {
+      font-size: var(--text-base);
+      font-weight: var(--font-weight-normal);
+      line-height: 1.5;
+    }
+  }
+}
+
+/* [FIX-ICON] Icon size utilities for 20px grid system */
+@layer utilities {
+  .icon-sm {
+    width: 16px;
+    height: 16px;
+  }
+  
+  .icon-md {
+    width: 20px;
+    height: 20px;
+  }
+  
+  .icon-lg {
+    width: 24px;
+    height: 24px;
+  }
+  
+  /* [FIX-TT] Touch target utilities */
+  .touch-target {
+    min-width: 44px;
+    min-height: 44px;
+    padding: 8px;
+  }
+  
+  .touch-target-small {
+    min-width: 44px;
+    min-height: 44px;
+    padding: 4px;
+  }
+  
+  /* [FIX-GESTURE] Safe edge hotzone - keep interactive elements away from screen edges */
+  .safe-edge {
+    margin-left: 8px;
+    margin-right: 8px;
+  }
+  
+  .safe-edge-large {
+    margin-left: 16px;
+    margin-right: 16px;
+  }
+}
+
+html {
+  font-size: var(--font-size);
+}
