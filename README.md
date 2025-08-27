@@ -1,4 +1,4 @@
-# Mobil Görev Yönetimi Uygulaması: Bir Prototip Dokümantasyonu
+# Mobil Görev Yönetimi Uygulaması: Prototip Dokümantasyonu
 
 Mevcut doküman, tek bir kod tabanı üzerinden çoklu platform (web ve mobil) uyumluluğu hedeflenerek, React ve TypeScript teknolojileriyle geliştirilmiş olan bir görev yönetimi arayüzü prototipini teferruatıyla açıklamaktadır. Projenin nihai amacı, React Native veya duyarlı tasarım metodolojileri aracılığıyla platformlar arası tutarlılığı temin edecek esnek bir mimari yapının tesis edilmesidir.
 
