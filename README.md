@@ -1,42 +1,41 @@
-# Mobile Todo List Application (TS Prototype)
+# Mobil Görev Yönetimi Uygulaması: Bir Prototip Dokümantasyonu
 
-TypeScript ile geliştirilen React tabanlı bir görev yönetimi arayüz prototipidir. Proje şu an **prototip** aşamasındadır. Hedef, ortak bir kod tabanı üzerinden hem web tarayıcılarında hem de mobil ortamlarda (ör. React Native veya responsive tasarım) çalışacak esnek bir mimariyi sağlamaktır.
+Mevcut doküman, tek bir kod tabanı üzerinden çoklu platform (web ve mobil) uyumluluğu hedeflenerek, React ve TypeScript teknolojileriyle geliştirilmiş olan bir görev yönetimi arayüzü prototipini teferruatıyla açıklamaktadır. Projenin nihai amacı, React Native veya duyarlı tasarım metodolojileri aracılığıyla platformlar arası tutarlılığı temin edecek esnek bir mimari yapının tesis edilmesidir.
 
-> **Not (Test ve Değişiklik Uyarısı):** Bu depo **test amaçlıdır**. Kod, API yüzeyleri, dizin yapısı ve özellikler **ileride haber verilmeksizin değişebilir**. Üretim kullanımına uygunluk garanti edilmez; amaç hızlı prototipleme ve deneysel doğrulamadır.
+> **Resmi Uyarı:** İşbu yazılım deposu, münhasıran aktif geliştirme ve test süreçleri için tahsis edilmiştir. Kod temeli, uygulama programlama arayüzleri (API), dizin şeması ve işlevsel özellikler, önceden bildirimde bulunulmaksızın değişikliğe tabi tutulabilir. Projenin mevcut prototip statüsü göz önünde bulundurulduğunda, üretim ortamlarında kullanımına yönelik herhangi bir uygunluk taahhüt edilmemektedir.
 
-## Genel Bakış
+## Mimari Bakış
 
-Uygulama, temalar, yerelleştirme, oturum ve bildirim sağlayıcılarının birleştiği bir **uygulama kabuğu** ile başlar. Başlangıç durumunda animasyonlu ekran geçişleri ve örnek görev verileri bulunur. Navigasyon ve durum yönetimi için özel hook’lar, yönetim özelliklerini taklit eden sahte servis katmanı ve temaya bağlı global CSS değişkenleriyle desteklenen bir tasarım sistemi yer alır.
+Uygulamanın mimari temeli, tema, yerelleştirme (i18n), oturum yönetimi ve bildirim mekanizmaları gibi temel servisleri entegre eden modüler bir uygulama kabuğu (application shell) üzerine tesis edilmiştir. Kullanıcı deneyiminin akıcılığını sağlamak maksadıyla, ekranlar arası geçişler animasyonlarla desteklenmiş ve başlangıç konfigürasyonuna örnek veri setleri dahil edilmiştir. Sistem, `useAppNavigation` gibi özelleştirilmiş React yardımcı fonksiyonları (hooks), yönetimsel işlevleri taklit eden simüle edilmiş servis katmanları ve tematik koşullara bağlı olarak değişen global CSS değişkenlerini içeren bir tasarım sistemi ile teçhiz edilmiştir.
 
-## Özellikler
+## Sistemin Temel Nitelikleri
 
-**Esnek uygulama kabuğu:** Temalar, yerelleştirme (i18n), oturum ve bildirim sağlayıcılarının birlikte çalıştığı bir üst seviye katman sunar.  
-**Akıcı deneyim:** Ekranlar arasında animasyonlu geçişler ve varsayılan örnek görev verileriyle hızlı başlangıç sağlar.  
-**Özel yardımcılar:** Navigasyon ve durum yönetimini basitleştiren `useAppNavigation` gibi özel React hook’ları kullanır.  
-**Sahte servis katmanı:** Yönetim özellikleri için gerçek API’lerle değiştirilebilir mock servis (ör. `adminService`).  
-**Tasarım sistemi:** Temaya bağlı global CSS değişkenleri ve tutarlı renk ölçekleriyle stil yönetimi.
+**Modüler Altyapı:** Tema, dil, oturum ve bildirim yönetimi gibi temel servislerin bütünleşik olarak çalıştığı, genişletilebilir bir uygulama kabuğu.  
+**Gelişmiş Kullanıcı Deneyimi:** Ekranlar arası animasyonlu geçişler ve önceden tanımlanmış veri setleri ile sağlanan kesintisiz başlangıç prosedürü.  
+**Özelleştirilmiş Yardımcı Fonksiyonlar (Hooks):** Navigasyon ve durum yönetimi süreçlerini soyutlayarak basitleştiren `useAppNavigation` gibi özel React hook'larının kullanımı.  
+**Simüle Edilmiş Servis Katmanı:** Gelecekte üretim seviyesi API entegrasyonlarına imkân tanıyacak şekilde tasarlanmış, `adminService` gibi ikame (mock) servisler.  
+**Merkezi Tasarım Sistemi:** Uygulama genelinde görsel tutarlılığı temin eden, temaya duyarlı global CSS değişkenleri ve standartlaştırılmış renk paletleri.
 
-## Proje Yapısı
+## Proje Dizin Yapısı
 
-Aşağıdaki yapı, kök dizindeki temel dosya ve klasörlerin bir özetidir.
+Projenin temel dosya ve klasörlerinin şematik bir dökümü aşağıda sunulmuştur.
 
 ```txt
 .
-├─ App.tsx                # Sağlayıcılar ve ekran yönlendirmesinin bulunduğu giriş noktası
-├─ components/            # Ekranlar (dashboard, profil, görev detayları vb.) ve temel UI bileşenleri
-├─ constants/             # Ekran tanımları, animasyon ayarları, örnek görev verileri
-├─ hooks/                 # Özel React hook’ları (örn. useAppNavigation)
-├─ services/              # Mock servis katmanı (gerçek API çağrılarına evrilecek)
-└─ styles/                # Global stil tanımları ve tema değişkenleri
+├─ App.tsx              # Ana giriş noktası: Sağlayıcılar ve ekran yönlendirmesi
+├─ components/          # Ekranlar (Pano, Profil vb.) ve temel arayüz bileşenleri
+├─ constants/           # Ekran tanımları, animasyon ayarları ve örnek veriler
+├─ hooks/               # useAppNavigation gibi özel React hook'ları
+├─ services/            # Gerçek API'lerle değiştirilecek sahte servis katmanı
+└─ styles/              # Global stiller ve tema değişkenleri
 
 ```
+## Öngörülen Geliştirme Süreçleri
 
-## Geliştirme Yol Haritası
+**Çoklu Platform Desteğinin Genişletilmesi:** Duyarlı tasarım prensipleri doğrultusunda, web ve mobil platformlar için ortak kod tabanının yeteneklerinin artırılması.
+**Veri Kalıcılığı ve Kimlik Doğrulama Entegrasyonu:** Simüle edilmiş servislerin, kalıcı bir veri depolama katmanı, harici API entegrasyonları ve standart kullanıcı kimlik doğrulama mekanizmaları ile ikame edilmesi.
+**Tasarım Sisteminin Yetkinleştirilmesi:** Farklı ekran çözünürlüklerinde tutarlılık ve yeniden kullanılabilirlik sağlayacak kapsamlı bir bileşen kütüphanesinin geliştirilmesi.
 
-Çoklu platform hedefi: Responsive tasarım ilkeleri ve platforma özgü adaptasyonlarla web ve mobilde ortak kod tabanının güçlendirilmesi.
-Veri ve kimlik doğrulama: Sahte servislerin yerine kalıcı veri katmanı, gerçek API çağrıları ve kullanıcı kimlik doğrulama mekanizmalarının eklenmesi.
-Tasarım sistemi olgunlaştırma: Farklı ekran boyutlarında yeniden kullanılabilir ve tutarlı bileşen kütüphanesinin genişletilmesi.
+## Lisans ve Atıf Bilgileri
 
-## Lisans ve Atıflar
-
-Kullanılan üçüncü parti varlıklar ve lisans detayları için `Attributions.md` dosyasına bakın.
+Uygulama kapsamında kullanılan üçüncü taraf varlıklara ve ilgili lisans koşullarına dair detaylı bilgi için `Attributions.md` başlıklı belgeye müracaat edilmelidir.
